@@ -13,7 +13,7 @@ const stringifyAuthor = require('stringify-author')
 const {guessEmail, guessAuthor, guessGitHubUsername} = require('conjecture')
 const validatePackageName = require('validate-npm-package-name')
 
-const TEMPLATE_REPO_URL = 'https://github.com/probot/template.git'
+const TEMPLATE_REPO_URL = 'https://github.com/liuderchi/template.git'
 
 program
   .usage('[options] [destination]')
@@ -118,6 +118,8 @@ inquirer.prompt(prompts)
     answers.year = new Date().getFullYear()
     return scaffold(program.template, destination, answers, {
       overwrite: Boolean(program.overwrite)
+      // TODO add `branch` option from `program.template`
+      // https://github.com/boneskull/egad/blob/master/index.js#L44
     })
   })
   .then(results => {
